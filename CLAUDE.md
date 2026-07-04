@@ -42,7 +42,7 @@ miss features; if requirements seem missing, re-read that file).
 | Ollama | `E:\Ollama` (models: `E:\OllamaModels`) | — |
 | npm cache | `E:\npm-cache` (via `npm config get cache`) | — |
 | pip cache | `E:\pip-cache` (via pip config + `PIP_CACHE_DIR`) | — |
-| gh CLI | **NOT INSTALLED** (verified 2026-07-03 — prompt assumed it exists; needs user approval to install to E:) | — |
+| gh CLI | `E:\GitHubCLI\bin\gh.exe` (installed 2026-07-04 with user approval; not on PATH) | 2.96.0 |
 | Docker | **NOT INSTALLED** | — |
 
 JDK and Maven are NOT on PATH — start scripts and any shell commands must set
@@ -114,9 +114,10 @@ inference/  Python 3.13 FastAPI, internal-only (127.0.0.1:8000). Owns ONLY
 
 ## GitHub workflow (mandatory for ALL work)
 
-- GitHub is the single source of truth. Repo setup + initial scaffold push
-  happen before feature development. Use the `gh` CLI (currently NOT installed
-  — get user approval, install to E:, e.g. `E:\GitHubCLI`).
+- GitHub is the single source of truth:
+  **https://github.com/vaibhavparashar8-a11y/bgremover-web** (public; note: a
+  separate pre-existing `bgremover` repo on the account is unrelated — do not
+  touch it). Use `E:\GitHubCLI\bin\gh.exe` (not on PATH).
 - Every new feature: GitHub Issue (with acceptance criteria) →
   branch `feature/<issue-number>-<short-name>` from main → conventional
   commits (`feat:`, `fix:`, `refactor:`, `test:`, `docs:`) referencing the
@@ -180,7 +181,10 @@ inference/  Python 3.13 FastAPI, internal-only (127.0.0.1:8000). Owns ONLY
 
 ## Current status / next steps (keep updated every session)
 
-**Session paused 2026-07-04 mid-way through implementing the full prompt.**
+**2026-07-04: full prompt implemented. Scaffold pushed to
+https://github.com/vaibhavparashar8-a11y/bgremover-web — from now on ALL work
+follows the issue → branch → PR flow (never commit to main directly).**
+Superseded history below:
 
 **Done:**
 - JDK 21 + Maven installed to E:; all caches/weights on E:.
@@ -196,7 +200,7 @@ inference/  Python 3.13 FastAPI, internal-only (127.0.0.1:8000). Owns ONLY
 - Start scripts updated (`start-inference.cmd` replaces `start-ml-service.cmd`;
   the old file may still exist — it is obsolete, do not use).
 
-**NOT done — resume here, in order:**
+**All items below are now DONE (2026-07-04) except item 5's GitHub part:**
 1. **Backend restructure** (was next in progress, no new code written yet):
    controller → service → client layers (`InferenceClient` interface +
    `RestInferenceClient` impl), DTOs + Bean Validation, global
