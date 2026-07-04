@@ -5,6 +5,16 @@ after the first model download. No paid APIs, open-source models only.
 
 ## Run
 
+Easiest: run `scripts\create-desktop-shortcuts.cmd` once — it puts two icons
+on your desktop:
+
+- **BGRemover Start** (green) — starts whatever isn't running, waits until the
+  app is healthy, then opens http://localhost:8080 in your browser.
+- **BGRemover Stop** (red) — fully stops the app (frees ports 8000/8080 and
+  closes the service windows; touches nothing else).
+
+Or from a terminal:
+
 ```
 start-all.cmd        # both services; app at http://localhost:8080
 ```
