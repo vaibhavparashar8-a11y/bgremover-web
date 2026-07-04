@@ -1,0 +1,26 @@
+server:
+  port: 8080
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 25MB
+      max-request-size: 26MB
+      # E:-drive policy: multipart spill files must never land in C:\ system temp
+      location: ${BGR_TMP_DIR:E:/Projects/BGRemover/data/tmp}
+  web:
+    resources:
+      static-locations:
+        - classpath:/static/
+        - file:${bgremover.frontend-dist:../frontend/dist}/
+
+bgremover:
+  inference:
+    base-url: ${BGR_INFERENCE_URL:http://127.0.0.1:8000}
+    # generous: first use of a model downloads its weights (up to ~1GB for BiRefNet)
+    read-timeout-seconds: 600
+    connect-timeout-seconds: 5
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

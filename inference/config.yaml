@@ -1,0 +1,47 @@
+# Model registry for the inference service.
+# Runtime-configurable: edit + restart, or use PUT /models/active (no rebuild).
+active_model: isnet-general-use
+max_loaded_models: 2
+
+models:
+  - name: u2net
+    label: U2Net (classic)
+    quality: good
+    speed: fast
+    size_mb: 176
+  - name: u2netp
+    label: U2Net-P (tiny)
+    quality: basic
+    speed: fastest
+    size_mb: 4
+  - name: isnet-general-use
+    label: ISNet General
+    quality: very good
+    speed: fast
+    size_mb: 179
+  - name: isnet-anime
+    label: ISNet Anime
+    quality: very good (illustrations)
+    speed: fast
+    size_mb: 176
+  - name: birefnet-general
+    label: BiRefNet General (HQ)
+    quality: best
+    speed: slow (GPU recommended)
+    size_mb: 928
+  - name: birefnet-general-lite
+    label: BiRefNet Lite
+    quality: excellent
+    speed: medium
+    size_mb: 178
+  - name: birefnet-portrait
+    label: BiRefNet Portrait
+    quality: best (people)
+    speed: slow (GPU recommended)
+    size_mb: 928
+  - name: sam
+    label: SAM (interactive selection)
+    quality: interactive
+    speed: medium
+    size_mb: 350
+    interactive: true

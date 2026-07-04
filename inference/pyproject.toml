@@ -1,0 +1,13 @@
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "B", "UP"]
+ignore = [
+  "B008", # FastAPI's Depends/File/Form defaults are the framework idiom
+  "E402", # app.config must be imported before third-party imports (env vars)
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
