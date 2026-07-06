@@ -130,6 +130,24 @@ inference/  Python 3.13 FastAPI, internal-only (127.0.0.1:8000). Owns ONLY
   descriptions ("Closes #12").
 - Before starting any coding task, state which issue/branch it is under;
   create one first if none exists.
+- **After every merge into main:** `git checkout main && git fetch origin &&
+  git pull origin main`, confirm `git status` shows "up to date with
+  origin/main", then delete the merged local branch.
+
+## Testing & documentation (mandatory, never skip)
+
+- Every feature PR includes tests covering the happy path and key edge cases
+  (frameworks per language are listed under Coding standards).
+- Every bug-fix PR includes a **regression test that would have caught the
+  bug** before the fix.
+- If something genuinely cannot be tested (e.g. requires real model weights,
+  GPU, or a live browser), document why in the PR description — never
+  silently skip.
+- Any PR that adds, removes, or changes behavior updates documentation **in
+  the same PR**: README, `.env.example` (new env vars), OpenAPI annotations
+  (API contract changes), and the "Current status" section at the bottom of
+  this file. Pure refactors with no behavior change need no docs update —
+  but check whether any README/OpenAPI snippet references the moved code.
 
 ## Coding standards
 
@@ -162,6 +180,22 @@ inference/  Python 3.13 FastAPI, internal-only (127.0.0.1:8000). Owns ONLY
   interfaces) and wait for user confirmation.
 - If a request conflicts with these rules, flag the tradeoff instead of
   silently violating them.
+
+## Session & change discipline
+
+- **Start fresh:** run `/clear` at the beginning of any brand-new feature or
+  task so prior session history doesn't cause context bloat or hallucinations.
+- **Agent orchestration:** do not fan out subagents unless the user explicitly
+  asks; if fan-out seems necessary, ask first.
+- **Look before you leap:** before modifying core/structural files
+  (`inference/app/registry.py`, `frontend/src/api.ts`, `InferenceClient` and
+  its impl, `application.yml`, `config.yaml`, start scripts), read the
+  relevant Architecture / Model strategy section above and inspect the
+  affected code first.
+- **Surgical changes only:** modify exclusively the code required for the
+  task or fix. Do not touch adjacent working logic, hand-reformat unrelated
+  blocks, or clean up styling unless explicitly requested (running the
+  standard formatters on files you changed is expected and fine).
 
 ## Build / run / test commands
 
