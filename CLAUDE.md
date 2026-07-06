@@ -260,3 +260,10 @@ Superseded history below:
 
 **Future (after the above):** MobileSAM/SAM2 ONNX integration; GPU execution
 provider for BiRefNet; video pipeline (Phase 2).
+
+**Android app (planned 2026-07-06, dev starts ~2026-07-09):** native Kotlin +
+Jetpack Compose client talking to this laptop's Spring Boot server over
+Tailscale/LAN — no Firebase, zero backend changes. Full phased roadmap:
+`docs/android-app-roadmap.md`; epic issue #5. Accepted deviation: Tailscale's
+Windows installer (system network driver) will live on C: — flagged, small
+footprint.
